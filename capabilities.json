@@ -1,0 +1,82 @@
+{
+    "dataRoles": [
+      
+        {
+            "displayName": "dbid",
+            "name": "dbid",
+            "kind": "Grouping"
+           
+        },
+        {
+            "displayName": "urn",
+            "name": "urn",
+            "kind": "Measure"
+        },
+        {
+            "displayName": "color_codes",
+            "name": "color_codes",
+            "kind": "Grouping"
+        }
+    ],
+    
+    "dataViewMappings": [
+       
+
+        { 
+            "table": {
+                "rows": {
+                    "select": [
+                        {
+                            "for": {
+                                "in": "dbid"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "urn"
+                            }
+                        },
+                        {
+                            "for": {
+                                "in": "color_codes"
+                            }
+                        }
+                    ]
+                             
+                }
+            }
+
+        }
+    
+       
+    ],
+
+
+    
+    "privileges": [
+        {
+            "name": "WebAccess",
+            "essential": true,
+            "parameters": [ "https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.js",
+             "https://developer.api.autodesk.com/modelderivative/v2/viewers/style.min.css", 
+            "https://*.azurewebsites.net/api/token", "https://developer.api.autodesk.com/", "https://cdn.derivative.autodesk.com/",
+            "https://*.autodesk.com"],
+            "scriptUrl":"./src/visual.ts",
+            "sandboxVisual": true,
+            "supportedEvents": ["click"],
+            "permissions":"AllAllowed",
+            "allowedConnections":["https://api.powerbi.com"],
+            "allowedResourceTypes":["Report", "Dashboard", "Title", "Dataset"],
+            "authType":"Implicit",
+            "contentSecurityPolicy":"script-src-elem https://developer.api.autodesk.com/modelderivative/v2/viewers/viewer3D.js;  https://developer.api.autodesk.com/modelderivative/v2/viewers/style.min.css; https://*.azurewebsites.net/api/token; https://developer.api.autodesk.com/; https://cdn.derivative.autodesk.com/; https://*.autodesk.com"
+        },
+        {
+            "name": "ExportContent",
+            "essential": false
+        }
+
+    ]
+
+   
+
+}
